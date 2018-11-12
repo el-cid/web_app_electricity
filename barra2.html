@@ -2,12 +2,19 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
+    <title>Consumo anual</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.4/dc.css"/>
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.4/dc.js"></script>
     <style>
+        .main-content{
+              width: 1000px;
+              margin: 0 auto;
+              text-align: center;
+              font-size: 12px;
+            }
         .dc-chart {
             float: none;
         }
@@ -22,8 +29,62 @@
             opacity: 1;
             stroke: #cccccc;
         }
+        #timeline{
+          width: 750px;
+          margin: 0 auto;
+        }
+        .time-series {
+          width:50px;
+          background: #eee;
+          margin:0;
+          padding:0;
+          text-align:center;
+          line-height: 30px;
+          float: left;
+        }
+        .active {
+          background: #b4b4b4;
+          color:white;
+        }
+        .trend {
+          font-weight: bold;
+          font-size: 110%;
+        }
+        .pos {
+          color: #1a9850;
+        }
+        .neg {
+          color: #d73027;
+        }
     </style>
+    
+</head>
+<body>
+    <section class="main-content">
+        <h1>Consumo anual por región</h1>
+        <div id="timeline">
+            <div class="time-series">BCA</div>
+            <div class="time-series">BCS</div>
+            <div class="time-series">CEL</div>
+            <div class="time-series">NES</div>
+            <div class="time-series">NOR</div>
+            <div class="time-series">NTE</div>
+            <div class="time-series">OCC</div>
+            <div class="time-series">ORI</div>
+            <div class="time-series">PEN</div>
+        </div>
+        
+        <div class="lineGraph">
+            <div class="chart-container">
+                <div id="chart"></div>
+            </div>
+        </div>
+    </section>
+</body>
     <script>
+        var data;
+        var year;
+        var consumptionArray;
         function requestData() {
             var xmlhttp = new XMLHttpRequest();
             //xmlhttp.open("POST", "ConsultaDatos.php", true);
@@ -33,8 +94,8 @@
 
             xmlhttp.onreadystatechange = function(){
                                             if( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
-                                                var consumptionArray = JSON.parse( xmlhttp.responseText );
-                                                var data = consumptionArray["BCA"]["2017"];
+                                                consumptionArray = JSON.parse( xmlhttp.responseText );
+                                                data = consumptionArray["BCA"]["2017"];
                                                 for ( i = 0; i < data.length; i++){
                                                     data[i]["value"] = +data[i]["value"];
                                                 }                                                
@@ -49,6 +110,7 @@
             var chartHeight = 400;
             var margin = 30;
             var lineColor = '#0000ff';
+            
 
             var filteredGroup = {
                 all: function() {
@@ -96,6 +158,54 @@
 
         }
 
+        function stringifyRegion(i){
+            var month;
+            switch (i){
+                case 0:
+                    month = "BCA"
+                    break;
+                case 1:
+                    month = "BCS"
+                    break;
+                case 2:
+                    month = "CEL"
+                    break;
+                case 3:
+                    month = "NES"
+                    break;
+                case 4:
+                    month = "NOR"
+                    break;
+                case 5:
+                    month = "NTE"
+                    break;
+                case 6:
+                    month = "OCC"
+                    break;
+                case 7:
+                    month = "ORI"
+                    break;
+                case 8:
+                    month = "PEN"
+                    break;
+            }
+            return month;
+        }
+        
+        var timeline = d3.selectAll(".time-series")
+                         .on("mouseover", function(d, i) {
+                                              year = stringifyRegion(i);
+                                              d3.selectAll(".time-series")
+                                                .attr("class", "time-series");
+                                              this.className = "time-series active";
+                                              data = consumptionArray[year]["2017"];
+                                              for ( i = 0; i < data.length; i++){
+                                                  data[i]["value"] = +data[i]["value"];
+                                              }
+                                              draw(data);
+                                          });
+
+        
         function formatDecimal(val) {
             if (isNaN(val)) {
                 return "0.00";
@@ -162,12 +272,4 @@
         }
         window.onload = requestData;
     </script>
-</head>
-<body>
-    <div class="lineGraph">
-        <div class="chart-container">
-            <div id="chart"></div>
-        </div>
-    </div>
-</body>
 </html>

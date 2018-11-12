@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.4/dc.css"/>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.4/dc.js"></script>
+    <style>
+        .dc-chart {
+            float: none;
+        }
+        .lineGraph g.axis.x g.tick text {
+            text-anchor: end;
+        }
+        .lineGraph g.axis.x g.tick line,
+        .lineGraph g.axis.y g.tick line {
+            display: none;
+        }
+        .grid-line.vertical line, g.axis.y path.domain {
+            opacity: 1;
+            stroke: #cccccc;
+        }
+    </style>
+    <script>
+        function requestData() {
+            var xmlhttp = new XMLHttpRequest();
+            //xmlhttp.open("POST", "ConsultaDatos.php", true);
+            //xmlhttp.setRequestHeader("Content-Type", "application/x-httpd-php");                  
+            xmlhttp.open("POST", "consumoKey.json", true);
+            xmlhttp.send();
+
+            xmlhttp.onreadystatechange = function(){
+                                            if( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
+                                                var consumptionArray = JSON.parse( xmlhttp.responseText );
+                                                var data = consumptionArray["BCA"]["2017"];
+                                                for ( i = 0; i < data.length; i++){
+                                                    data[i]["value"] = +data[i]["value"];
+                                                }                                                
+                                                draw(data);
+                                            }    
+                                         };
+        }
+
+        function draw(data){
+            var chartElementId = 'chart';
+            var chartWidth = 800;
+            var chartHeight = 400;
+            var margin = 30;
+            var lineColor = '#0000ff';
+
+            var filteredGroup = {
+                all: function() {
+                        return data;
+                    },
+                ordering: function(item) {
+                              return data.map( function(d) {
+                                                   return d.key;
+                                               }).indexOf(item.key);
+                          },
+                xAxisTickValues: data.map( function(d) {
+                                               return d.key;
+                                           })
+            };
+            var chart = dc.lineChart('#'+chartElementId);
+            var ndx = crossfilter(data);
+            var dimension = ndx.dimension( function(item) {
+                                               return item.value;
+                                            });
+            chart.width(chartWidth)
+                 .height(chartHeight)
+                 .ordering(filteredGroup.ordering)
+                 .colors([lineColor])
+                 .brushOn(false)
+                 .dotRadius(5)
+                 .elasticX(true)
+                 .xAxisPadding(0)
+                 .xyTipsOn(true)
+                 .margins({top: 10, right: 50, bottom: 100, left: 50})
+                 .renderDataPoints({radius: 5, fillOpacity: 1, strokeOpacity: 1})
+                 .clipPadding(40)
+                 .dimension(dimension)
+                 .renderVerticalGridLines(true)
+                 .group(filteredGroup);
+
+            _formatYAxis(chart, filteredGroup);
+            _formatXAxis(chart, filteredGroup, chartWidth);
+
+            chart.filter = function() {};
+            chart.render();
+
+            _rotateXAxisLabels(chart);
+            _formatVerticalGridLines(chart);
+            _repositionYAxis(chart);
+
+        }
+
+        function formatDecimal(val) {
+            if (isNaN(val)) {
+                return "0.00";
+            }
+            else if (val != null) {
+                return d3.format(",.2f")(val);
+            }
+            else {
+                return "N/A";
+            }
+        }
+
+        function _formatYAxis(chart, filteredGroup) {
+            var units = ['','K','M','B','T','Q'];
+            chart.yAxis().tickFormat( function(v) {
+                                          var i, unit, raw, formatted;
+                                          for (i=0; i < units.length; i++) {
+                                              unit = Math.pow(1000,i);
+                                              if (v >= unit && v < Math.pow(1000,(i+1))) {
+                                                  raw = v/unit;
+                                                  if (raw === Math.floor(raw)) {
+                                                      formatted = raw + units[i];
+                                                  } 
+                                                  else {
+                                                      formatted = formatDecimal(raw);
+                                                      // if the formatted value is 3.50, pare it down to 3.5
+                                                      if (formatted.charAt(formatted.length-1) === '0') {
+                                                          formatted = formatted.substring(0,(formatted.length-1));
+                                                       }
+                                                      formatted = formatted + units[i];
+                                                  }
+                                                  return formatted;
+                                              }
+                                          }
+                                          return v;
+                                      });
+            chart.yAxis().tickSize(3,0);
+            chart.y(d3.scale.linear().domain(d3.extent(filteredGroup.all(), function(item) {
+                                                                                return item.value;
+                                                                            })).nice());
+        }
+
+        function _repositionYAxis(chart) {
+            var yAxis = chart.select('g.axis.y').remove();
+            chart.select('svg > g > g.grid-line.vertical').select( function() {
+                                                                       return this.parentNode.insertBefore(yAxis.node(), this);
+                                                                   });
+        }
+
+        function _formatXAxis(chart, filteredGroup, chartWidth) {
+            var ordinalScale = d3.scale.ordinal().domain(filteredGroup.xAxisTickValues);
+            chart._outerRangeBandPadding(0);
+            chart.x(ordinalScale).xUnits(dc.units.ordinal)
+        }
+
+        function _formatVerticalGridLines(chart) {
+          chart.selectAll('.grid-line.vertical line, g.axis.y path.domain').attr('stroke-dasharray', '5,3');
+        }
+
+        function _rotateXAxisLabels(chart) {
+          chart.selectAll('g.axis.x g.tick text')
+            .attr('transform', 'rotate(-60 0 12)')
+            .attr('style', null);
+        }
+        window.onload = requestData;
+    </script>
+</head>
+<body>
+    <div class="lineGraph">
+        <div class="chart-container">
+            <div id="chart"></div>
+        </div>
+    </div>
+</body>
+</html>

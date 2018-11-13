@@ -1,0 +1,448 @@
+{
+    "2017": {
+        "1": [
+            {
+                "region": "CEL",
+                "cantidad": "5042930",
+                "ptg": "22.8944"
+            },
+            {
+                "region": "NES",
+                "cantidad": "3717404",
+                "ptg": "16.8767"
+            },
+            {
+                "region": "NOR",
+                "cantidad": "1402606",
+                "ptg": "6.3677"
+            },
+            {
+                "region": "NTE",
+                "cantidad": "1810107",
+                "ptg": "8.2177"
+            },
+            {
+                "region": "OCC",
+                "cantidad": "5348703",
+                "ptg": "24.2826"
+            },
+            {
+                "region": "ORI",
+                "cantidad": "3815127",
+                "ptg": "17.3203"
+            },
+            {
+                "region": "PEN",
+                "cantidad": "890019",
+                "ptg": "4.0406"
+            }
+        ],
+        "2": [
+            {
+                "region": "CEL",
+                "cantidad": "4651298",
+                "ptg": "22.5104"
+            },
+            {
+                "region": "NES",
+                "cantidad": "3549970",
+                "ptg": "17.1804"
+            },
+            {
+                "region": "NOR",
+                "cantidad": "1305830",
+                "ptg": "6.3197"
+            },
+            {
+                "region": "NTE",
+                "cantidad": "1668103",
+                "ptg": "8.0729"
+            },
+            {
+                "region": "OCC",
+                "cantidad": "5008957",
+                "ptg": "24.2413"
+            },
+            {
+                "region": "ORI",
+                "cantidad": "3618922",
+                "ptg": "17.5141"
+            },
+            {
+                "region": "PEN",
+                "cantidad": "859813",
+                "ptg": "4.1611"
+            }
+        ],
+        "3": [
+            {
+                "region": "CEL",
+                "cantidad": "5200031",
+                "ptg": "21.7548"
+            },
+            {
+                "region": "NES",
+                "cantidad": "4168932",
+                "ptg": "17.4411"
+            },
+            {
+                "region": "NOR",
+                "cantidad": "1657964",
+                "ptg": "6.9363"
+            },
+            {
+                "region": "NTE",
+                "cantidad": "1999142",
+                "ptg": "8.3636"
+            },
+            {
+                "region": "OCC",
+                "cantidad": "5755637",
+                "ptg": "24.0793"
+            },
+            {
+                "region": "ORI",
+                "cantidad": "4119448",
+                "ptg": "17.2341"
+            },
+            {
+                "region": "PEN",
+                "cantidad": "1001722",
+                "ptg": "4.1908"
+            }
+        ],
+        "4": [
+            {
+                "region": "CEL",
+                "cantidad": "4887853",
+                "ptg": "20.6113"
+            },
+            {
+                "region": "NES",
+                "cantidad": "4300349",
+                "ptg": "18.1339"
+            },
+            {
+                "region": "NOR",
+                "cantidad": "1743048",
+                "ptg": "7.3501"
+            },
+            {
+                "region": "NTE",
+                "cantidad": "2195382",
+                "ptg": "9.2576"
+            },
+            {
+                "region": "OCC",
+                "cantidad": "5496854",
+                "ptg": "23.1793"
+            },
+            {
+                "region": "ORI",
+                "cantidad": "4047408",
+                "ptg": "17.0672"
+            },
+            {
+                "region": "PEN",
+                "cantidad": "1043589",
+                "ptg": "4.4006"
+            }
+        ],
+        "5": [
+            {
+                "region": "CEL",
+                "cantidad": "5317763",
+                "ptg": "19.9543"
+            },
+            {
+                "region": "NES",
+                "cantidad": "4967454",
+                "ptg": "18.6398"
+            },
+            {
+                "region": "NOR",
+                "cantidad": "2039323",
+                "ptg": "7.6523"
+            },
+            {
+                "region": "NTE",
+                "cantidad": "2500454",
+                "ptg": "9.3827"
+            },
+            {
+                "region": "OCC",
+                "cantidad": "6168243",
+                "ptg": "23.1457"
+            },
+            {
+                "region": "ORI",
+                "cantidad": "4467726",
+                "ptg": "16.7647"
+            },
+            {
+                "region": "PEN",
+                "cantidad": "1188696",
+                "ptg": "4.4605"
+            }
+        ],
+        "6": [
+            {
+                "region": "CEL",
+                "cantidad": "5108055",
+                "ptg": "18.9792"
+            },
+            {
+                "region": "NES",
+                "cantidad": "5363102",
+                "ptg": "19.9268"
+            },
+            {
+                "region": "NOR",
+                "cantidad": "2461710",
+                "ptg": "9.1466"
+            },
+            {
+                "region": "NTE",
+                "cantidad": "2730119",
+                "ptg": "10.1439"
+            },
+            {
+                "region": "OCC",
+                "cantidad": "5932612",
+                "ptg": "22.0428"
+            },
+            {
+                "region": "ORI",
+                "cantidad": "4199552",
+                "ptg": "15.6036"
+            },
+            {
+                "region": "PEN",
+                "cantidad": "1118874",
+                "ptg": "4.1572"
+            }
+        ],
+        "7": [
+            {
+                "region": "CEL",
+                "cantidad": "5117060",
+                "ptg": "19.1694"
+            },
+            {
+                "region": "NES",
+                "cantidad": "5411342",
+                "ptg": "20.2718"
+            },
+            {
+                "region": "NOR",
+                "cantidad": "2647746",
+                "ptg": "9.9189"
+            },
+            {
+                "region": "NTE",
+                "cantidad": "2557581",
+                "ptg": "9.5811"
+            },
+            {
+                "region": "OCC",
+                "cantidad": "5503684",
+                "ptg": "20.6177"
+            },
+            {
+                "region": "ORI",
+                "cantidad": "4268497",
+                "ptg": "15.9905"
+            },
+            {
+                "region": "PEN",
+                "cantidad": "1188032",
+                "ptg": "4.4506"
+            }
+        ],
+        "8": [
+            {
+                "region": "CEL",
+                "cantidad": "5264039",
+                "ptg": "19.1411"
+            },
+            {
+                "region": "NES",
+                "cantidad": "5634416",
+                "ptg": "20.4879"
+            },
+            {
+                "region": "NOR",
+                "cantidad": "2780639",
+                "ptg": "10.1110"
+            },
+            {
+                "region": "NTE",
+                "cantidad": "2471895",
+                "ptg": "8.9883"
+            },
+            {
+                "region": "OCC",
+                "cantidad": "5803677",
+                "ptg": "21.1033"
+            },
+            {
+                "region": "ORI",
+                "cantidad": "4335163",
+                "ptg": "15.7635"
+            },
+            {
+                "region": "PEN",
+                "cantidad": "1211406",
+                "ptg": "4.4049"
+            }
+        ],
+        "9": [
+            {
+                "region": "CEL",
+                "cantidad": "4955914",
+                "ptg": "19.6747"
+            },
+            {
+                "region": "NES",
+                "cantidad": "4891908",
+                "ptg": "19.4206"
+            },
+            {
+                "region": "NOR",
+                "cantidad": "2482189",
+                "ptg": "9.8541"
+            },
+            {
+                "region": "NTE",
+                "cantidad": "2376111",
+                "ptg": "9.4330"
+            },
+            {
+                "region": "OCC",
+                "cantidad": "5304122",
+                "ptg": "21.0570"
+            },
+            {
+                "region": "ORI",
+                "cantidad": "4044545",
+                "ptg": "16.0566"
+            },
+            {
+                "region": "PEN",
+                "cantidad": "1134506",
+                "ptg": "4.5039"
+            }
+        ],
+        "10": [
+            {
+                "region": "CEL",
+                "cantidad": "5192371",
+                "ptg": "20.8604"
+            },
+            {
+                "region": "NES",
+                "cantidad": "4491902",
+                "ptg": "18.0463"
+            },
+            {
+                "region": "NOR",
+                "cantidad": "2472463",
+                "ptg": "9.9332"
+            },
+            {
+                "region": "NTE",
+                "cantidad": "2019808",
+                "ptg": "8.1146"
+            },
+            {
+                "region": "OCC",
+                "cantidad": "5590747",
+                "ptg": "22.4609"
+            },
+            {
+                "region": "ORI",
+                "cantidad": "4065377",
+                "ptg": "16.3327"
+            },
+            {
+                "region": "PEN",
+                "cantidad": "1058327",
+                "ptg": "4.2518"
+            }
+        ],
+        "11": [
+            {
+                "region": "CEL",
+                "cantidad": "4999858",
+                "ptg": "21.8560"
+            },
+            {
+                "region": "NES",
+                "cantidad": "4046029",
+                "ptg": "17.6865"
+            },
+            {
+                "region": "NOR",
+                "cantidad": "1826635",
+                "ptg": "7.9848"
+            },
+            {
+                "region": "NTE",
+                "cantidad": "1812305",
+                "ptg": "7.9222"
+            },
+            {
+                "region": "OCC",
+                "cantidad": "5457363",
+                "ptg": "23.8559"
+            },
+            {
+                "region": "ORI",
+                "cantidad": "3827476",
+                "ptg": "16.7311"
+            },
+            {
+                "region": "PEN",
+                "cantidad": "906708",
+                "ptg": "3.9635"
+            }
+        ],
+        "12": [
+            {
+                "region": "CEL",
+                "cantidad": "4947932",
+                "ptg": "22.3842"
+            },
+            {
+                "region": "NES",
+                "cantidad": "3880322",
+                "ptg": "17.5544"
+            },
+            {
+                "region": "NOR",
+                "cantidad": "1473012",
+                "ptg": "6.6638"
+            },
+            {
+                "region": "NTE",
+                "cantidad": "1808411",
+                "ptg": "8.1812"
+            },
+            {
+                "region": "OCC",
+                "cantidad": "5325102",
+                "ptg": "24.0905"
+            },
+            {
+                "region": "ORI",
+                "cantidad": "3773748",
+                "ptg": "17.0722"
+            },
+            {
+                "region": "PEN",
+                "cantidad": "896075",
+                "ptg": "4.0538"
+            }
+        ]
+    }
+}    

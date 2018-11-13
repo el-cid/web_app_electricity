@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Consumo anual</title>
+    <title>Consumo SIN</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.4/dc.css"/>
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
@@ -15,20 +15,7 @@
               text-align: center;
               font-size: 12px;
             }
-        .dc-chart {
-            float: none;
-        }
-        .lineGraph g.axis.x g.tick text {
-            text-anchor: end;
-        }
-        .lineGraph g.axis.x g.tick line,
-        .lineGraph g.axis.y g.tick line {
-            display: none;
-        }
-        .grid-line.vertical line, g.axis.y path.domain {
-            opacity: 1;
-            stroke: #cccccc;
-        }
+        
         #timeline{
           width: 750px;
           margin: 0 auto;
@@ -61,7 +48,7 @@
 </head>
 <body>
     <section class="main-content">
-        <h1>Consumo anual por región</h1>
+        <h1>Consumo eléctrico mensual en el Sistema Interconectado Nacional</h1>
         <div id="timeline">
             <div class="time-series"></div>
             <div class="time-series">Ene</div>
@@ -78,11 +65,7 @@
             <div class="time-series">Dic</div>
         </div>
         
-        <div class="lineGraph">
-            <div class="chart-container">
-                <div id="chart"></div>
-            </div>
-        </div>
+        <div id="chart"></div>
     </section>
 </body>
     <script>
@@ -124,7 +107,7 @@
                                                return item.region;
                                             });
 speedSumGroup = runDimension.group().reduceSum(function(d) { 
-      console.log(d); return d.ptg;
+       return d.cantidad;
     });
 
   chart
@@ -134,14 +117,8 @@ speedSumGroup = runDimension.group().reduceSum(function(d) {
     .innerRadius(10)
     .dimension(runDimension)
     .group(speedSumGroup) // by default, pie charts will use group.key as the label
-    .renderLabel(true)
-    .label(function (d) {
-      console.log('label');
-      console.log(d);
-      return d.key.toUpperCase();
-    });
-
-  chart.render();
+    .renderLabel(true).label(function (d) {return d.key.toUpperCase();});
+    chart.render();
 
             
         }

@@ -1,1 +1,470 @@
-{"BCA":{"2017":[{"key":"Enero","value":"947639"},{"key":"Febrero","value":"859065"},{"key":"Marzo","value":"998933"},{"key":"Abril","value":"1008788"},{"key":"Mayo","value":"1132962"},{"key":"Junio","value":"1357847"},{"key":"Julio","value":"1569911"},{"key":"Agosto","value":"1661428"},{"key":"Septiembre","value":"1251929"},{"key":"Octubre","value":"1109841"},{"key":"Noviembre","value":"962650"},{"key":"Diciembre","value":"963892"}]},"BCS":{"2017":[{"key":"Enero","value":"180302"},{"key":"Febrero","value":"165571"},{"key":"Marzo","value":"198950"},{"key":"Abril","value":"203560"},{"key":"Mayo","value":"213750"},{"key":"Junio","value":"233625"},{"key":"Julio","value":"297065"},{"key":"Agosto","value":"312174"},{"key":"Septiembre","value":"256354"},{"key":"Octubre","value":"285739"},{"key":"Noviembre","value":"229054"},{"key":"Diciembre","value":"198471"}]},"CEL":{"2017":[{"key":"Enero","value":"5042930"},{"key":"Febrero","value":"4651298"},{"key":"Marzo","value":"5200031"},{"key":"Abril","value":"4887853"},{"key":"Mayo","value":"5317763"},{"key":"Junio","value":"5108055"},{"key":"Julio","value":"5117060"},{"key":"Agosto","value":"5264039"},{"key":"Septiembre","value":"4955914"},{"key":"Octubre","value":"5192371"},{"key":"Noviembre","value":"4999858"},{"key":"Diciembre","value":"4947932"}]},"NES":{"2017":[{"key":"Enero","value":"3717404"},{"key":"Febrero","value":"3549970"},{"key":"Marzo","value":"4168932"},{"key":"Abril","value":"4300349"},{"key":"Mayo","value":"4967454"},{"key":"Junio","value":"5363102"},{"key":"Julio","value":"5411342"},{"key":"Agosto","value":"5634416"},{"key":"Septiembre","value":"4891908"},{"key":"Octubre","value":"4491902"},{"key":"Noviembre","value":"4046029"},{"key":"Diciembre","value":"3880322"}]},"NOR":{"2017":[{"key":"Enero","value":"1402606"},{"key":"Febrero","value":"1305830"},{"key":"Marzo","value":"1657964"},{"key":"Abril","value":"1743048"},{"key":"Mayo","value":"2039323"},{"key":"Junio","value":"2461710"},{"key":"Julio","value":"2647746"},{"key":"Agosto","value":"2780639"},{"key":"Septiembre","value":"2482189"},{"key":"Octubre","value":"2472463"},{"key":"Noviembre","value":"1826635"},{"key":"Diciembre","value":"1473012"}]},"NTE":{"2017":[{"key":"Enero","value":"1810107"},{"key":"Febrero","value":"1668103"},{"key":"Marzo","value":"1999142"},{"key":"Abril","value":"2195382"},{"key":"Mayo","value":"2500454"},{"key":"Junio","value":"2730119"},{"key":"Julio","value":"2557581"},{"key":"Agosto","value":"2471895"},{"key":"Septiembre","value":"2376111"},{"key":"Octubre","value":"2019808"},{"key":"Noviembre","value":"1812305"},{"key":"Diciembre","value":"1808411"}]},"OCC":{"2017":[{"key":"Enero","value":"5348703"},{"key":"Febrero","value":"5008957"},{"key":"Marzo","value":"5755637"},{"key":"Abril","value":"5496854"},{"key":"Mayo","value":"6168243"},{"key":"Junio","value":"5932612"},{"key":"Julio","value":"5503684"},{"key":"Agosto","value":"5803677"},{"key":"Septiembre","value":"5304122"},{"key":"Octubre","value":"5590747"},{"key":"Noviembre","value":"5457363"},{"key":"Diciembre","value":"5325102"}]},"ORI":{"2017":[{"key":"Enero","value":"3815127"},{"key":"Febrero","value":"3618922"},{"key":"Marzo","value":"4119448"},{"key":"Abril","value":"4047408"},{"key":"Mayo","value":"4467726"},{"key":"Junio","value":"4199552"},{"key":"Julio","value":"4268497"},{"key":"Agosto","value":"4335163"},{"key":"Septiembre","value":"4044545"},{"key":"Octubre","value":"4065377"},{"key":"Noviembre","value":"3827476"},{"key":"Diciembre","value":"3773748"}]},"PEN":{"2017":[{"key":"Enero","value":"890019"},{"key":"Febrero","value":"859813"},{"key":"Marzo","value":"1001722"},{"key":"Abril","value":"1043589"},{"key":"Mayo","value":"1188696"},{"key":"Junio","value":"1118874"},{"key":"Julio","value":"1188032"},{"key":"Agosto","value":"1211406"},{"key":"Septiembre","value":"1134506"},{"key":"Octubre","value":"1058327"},{"key":"Noviembre","value":"906708"},{"key":"Diciembre","value":"896075"}]}}    
+{
+    "BCA": {
+        "2017": [
+            {
+                "key": "Enero",
+                "value": "947639"
+            },
+            {
+                "key": "Febrero",
+                "value": "859065"
+            },
+            {
+                "key": "Marzo",
+                "value": "998933"
+            },
+            {
+                "key": "Abril",
+                "value": "1008788"
+            },
+            {
+                "key": "Mayo",
+                "value": "1132962"
+            },
+            {
+                "key": "Junio",
+                "value": "1357847"
+            },
+            {
+                "key": "Julio",
+                "value": "1569911"
+            },
+            {
+                "key": "Agosto",
+                "value": "1661428"
+            },
+            {
+                "key": "Septiembre",
+                "value": "1251929"
+            },
+            {
+                "key": "Octubre",
+                "value": "1109841"
+            },
+            {
+                "key": "Noviembre",
+                "value": "962650"
+            },
+            {
+                "key": "Diciembre",
+                "value": "963892"
+            }
+        ]
+    },
+    "BCS": {
+        "2017": [
+            {
+                "key": "Enero",
+                "value": "180302"
+            },
+            {
+                "key": "Febrero",
+                "value": "165571"
+            },
+            {
+                "key": "Marzo",
+                "value": "198950"
+            },
+            {
+                "key": "Abril",
+                "value": "203560"
+            },
+            {
+                "key": "Mayo",
+                "value": "213750"
+            },
+            {
+                "key": "Junio",
+                "value": "233625"
+            },
+            {
+                "key": "Julio",
+                "value": "297065"
+            },
+            {
+                "key": "Agosto",
+                "value": "312174"
+            },
+            {
+                "key": "Septiembre",
+                "value": "256354"
+            },
+            {
+                "key": "Octubre",
+                "value": "285739"
+            },
+            {
+                "key": "Noviembre",
+                "value": "229054"
+            },
+            {
+                "key": "Diciembre",
+                "value": "198471"
+            }
+        ]
+    },
+    "CEL": {
+        "2017": [
+            {
+                "key": "Enero",
+                "value": "5042930"
+            },
+            {
+                "key": "Febrero",
+                "value": "4651298"
+            },
+            {
+                "key": "Marzo",
+                "value": "5200031"
+            },
+            {
+                "key": "Abril",
+                "value": "4887853"
+            },
+            {
+                "key": "Mayo",
+                "value": "5317763"
+            },
+            {
+                "key": "Junio",
+                "value": "5108055"
+            },
+            {
+                "key": "Julio",
+                "value": "5117060"
+            },
+            {
+                "key": "Agosto",
+                "value": "5264039"
+            },
+            {
+                "key": "Septiembre",
+                "value": "4955914"
+            },
+            {
+                "key": "Octubre",
+                "value": "5192371"
+            },
+            {
+                "key": "Noviembre",
+                "value": "4999858"
+            },
+            {
+                "key": "Diciembre",
+                "value": "4947932"
+            }
+        ]
+    },
+    "NES": {
+        "2017": [
+            {
+                "key": "Enero",
+                "value": "3717404"
+            },
+            {
+                "key": "Febrero",
+                "value": "3549970"
+            },
+            {
+                "key": "Marzo",
+                "value": "4168932"
+            },
+            {
+                "key": "Abril",
+                "value": "4300349"
+            },
+            {
+                "key": "Mayo",
+                "value": "4967454"
+            },
+            {
+                "key": "Junio",
+                "value": "5363102"
+            },
+            {
+                "key": "Julio",
+                "value": "5411342"
+            },
+            {
+                "key": "Agosto",
+                "value": "5634416"
+            },
+            {
+                "key": "Septiembre",
+                "value": "4891908"
+            },
+            {
+                "key": "Octubre",
+                "value": "4491902"
+            },
+            {
+                "key": "Noviembre",
+                "value": "4046029"
+            },
+            {
+                "key": "Diciembre",
+                "value": "3880322"
+            }
+        ]
+    },
+    "NOR": {
+        "2017": [
+            {
+                "key": "Enero",
+                "value": "1402606"
+            },
+            {
+                "key": "Febrero",
+                "value": "1305830"
+            },
+            {
+                "key": "Marzo",
+                "value": "1657964"
+            },
+            {
+                "key": "Abril",
+                "value": "1743048"
+            },
+            {
+                "key": "Mayo",
+                "value": "2039323"
+            },
+            {
+                "key": "Junio",
+                "value": "2461710"
+            },
+            {
+                "key": "Julio",
+                "value": "2647746"
+            },
+            {
+                "key": "Agosto",
+                "value": "2780639"
+            },
+            {
+                "key": "Septiembre",
+                "value": "2482189"
+            },
+            {
+                "key": "Octubre",
+                "value": "2472463"
+            },
+            {
+                "key": "Noviembre",
+                "value": "1826635"
+            },
+            {
+                "key": "Diciembre",
+                "value": "1473012"
+            }
+        ]
+    },
+    "NTE": {
+        "2017": [
+            {
+                "key": "Enero",
+                "value": "1810107"
+            },
+            {
+                "key": "Febrero",
+                "value": "1668103"
+            },
+            {
+                "key": "Marzo",
+                "value": "1999142"
+            },
+            {
+                "key": "Abril",
+                "value": "2195382"
+            },
+            {
+                "key": "Mayo",
+                "value": "2500454"
+            },
+            {
+                "key": "Junio",
+                "value": "2730119"
+            },
+            {
+                "key": "Julio",
+                "value": "2557581"
+            },
+            {
+                "key": "Agosto",
+                "value": "2471895"
+            },
+            {
+                "key": "Septiembre",
+                "value": "2376111"
+            },
+            {
+                "key": "Octubre",
+                "value": "2019808"
+            },
+            {
+                "key": "Noviembre",
+                "value": "1812305"
+            },
+            {
+                "key": "Diciembre",
+                "value": "1808411"
+            }
+        ]
+    },
+    "OCC": {
+        "2017": [
+            {
+                "key": "Enero",
+                "value": "5348703"
+            },
+            {
+                "key": "Febrero",
+                "value": "5008957"
+            },
+            {
+                "key": "Marzo",
+                "value": "5755637"
+            },
+            {
+                "key": "Abril",
+                "value": "5496854"
+            },
+            {
+                "key": "Mayo",
+                "value": "6168243"
+            },
+            {
+                "key": "Junio",
+                "value": "5932612"
+            },
+            {
+                "key": "Julio",
+                "value": "5503684"
+            },
+            {
+                "key": "Agosto",
+                "value": "5803677"
+            },
+            {
+                "key": "Septiembre",
+                "value": "5304122"
+            },
+            {
+                "key": "Octubre",
+                "value": "5590747"
+            },
+            {
+                "key": "Noviembre",
+                "value": "5457363"
+            },
+            {
+                "key": "Diciembre",
+                "value": "5325102"
+            }
+        ]
+    },
+    "ORI": {
+        "2017": [
+            {
+                "key": "Enero",
+                "value": "3815127"
+            },
+            {
+                "key": "Febrero",
+                "value": "3618922"
+            },
+            {
+                "key": "Marzo",
+                "value": "4119448"
+            },
+            {
+                "key": "Abril",
+                "value": "4047408"
+            },
+            {
+                "key": "Mayo",
+                "value": "4467726"
+            },
+            {
+                "key": "Junio",
+                "value": "4199552"
+            },
+            {
+                "key": "Julio",
+                "value": "4268497"
+            },
+            {
+                "key": "Agosto",
+                "value": "4335163"
+            },
+            {
+                "key": "Septiembre",
+                "value": "4044545"
+            },
+            {
+                "key": "Octubre",
+                "value": "4065377"
+            },
+            {
+                "key": "Noviembre",
+                "value": "3827476"
+            },
+            {
+                "key": "Diciembre",
+                "value": "3773748"
+            }
+        ]
+    },
+    "PEN": {
+        "2017": [
+            {
+                "key": "Enero",
+                "value": "890019"
+            },
+            {
+                "key": "Febrero",
+                "value": "859813"
+            },
+            {
+                "key": "Marzo",
+                "value": "1001722"
+            },
+            {
+                "key": "Abril",
+                "value": "1043589"
+            },
+            {
+                "key": "Mayo",
+                "value": "1188696"
+            },
+            {
+                "key": "Junio",
+                "value": "1118874"
+            },
+            {
+                "key": "Julio",
+                "value": "1188032"
+            },
+            {
+                "key": "Agosto",
+                "value": "1211406"
+            },
+            {
+                "key": "Septiembre",
+                "value": "1134506"
+            },
+            {
+                "key": "Octubre",
+                "value": "1058327"
+            },
+            {
+                "key": "Noviembre",
+                "value": "906708"
+            },
+            {
+                "key": "Diciembre",
+                "value": "896075"
+            }
+        ]
+    }
+}    

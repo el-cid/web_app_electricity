@@ -19,7 +19,7 @@
         $regiones = array(); 
         readRegions( $conn , $regiones );
         readConsumption( $conn , $regiones );
-        echo json_encode($regiones);
+        echo json_encode($regiones, JSON_PRETTY_PRINT);
 
     }
 

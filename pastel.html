@@ -101,6 +101,7 @@
                                                 consumptionArray = JSON.parse( xmlhttp.responseText );
                                                 data = consumptionArray["2017"]["1"];
                                                 for ( i = 0; i < data.length; i++){
+                                                    data[i]["cantidad"] = +data[i]["cantidad"];
                                                     data[i]["ptg"] = +data[i]["ptg"];
                                                 }                                                
                                                 draw(data);
@@ -117,31 +118,32 @@
             
 
             var chart = dc.pieChart('#'+chartElementId);
-            /*
+            
             var ndx = crossfilter(data);
-            var dimension = ndx.dimension( function(item) {
-                                               return item.value;
+            var runDimension = ndx.dimension( function(item) {
+                                               return item.region;
                                             });
-            chart.width(chartWidth)
-                 .height(chartHeight)
-                 .ordering(filteredGroup.ordering)
-                 .colors([lineColor])
-                 .brushOn(false)
-                 .dotRadius(5)
-                 .elasticX(true)
-                 .xAxisPadding(0)
-                 .xyTipsOn(true)
-                 .margins({top: 10, right: 50, bottom: 100, left: 50})
-                 .renderDataPoints({radius: 5, fillOpacity: 1, strokeOpacity: 1})
-                 .clipPadding(40)
-                 .dimension(dimension)
-                 .renderVerticalGridLines(true)
-                 .group(filteredGroup);
+speedSumGroup = runDimension.group().reduceSum(function(d) { 
+      console.log(d); return d.ptg;
+    });
 
+  chart
+    .width(568)
+    .height(580)
+    .slicesCap(7)
+    .innerRadius(10)
+    .dimension(runDimension)
+    .group(speedSumGroup) // by default, pie charts will use group.key as the label
+    .renderLabel(true)
+    .label(function (d) {
+      console.log('label');
+      console.log(d);
+      return d.key.toUpperCase();
+    });
 
-            chart.filter = function() {};
-            chart.render();
-            */
+  chart.render();
+
+            
         }
 
         
@@ -153,6 +155,7 @@
                                               this.className = "time-series active";
                                               data = consumptionArray["2017"][i];
                                               for ( i = 0; i < data.length; i++){
+                                                  data[i]["cantidad"] = +data[i]["cantidad"];
                                                   data[i]["ptg"] = +data[i]["ptg"];
                                               }
                                               draw(data);

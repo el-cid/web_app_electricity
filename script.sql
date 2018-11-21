@@ -10,6 +10,9 @@ CREATE TABLE sistema(
     PRIMARY KEY ( idSistema )
 );
 
+INSERT INTO sistema( idSistema , nombre ) VALUES ('BCA','Baja California'),
+                                                 ('BCS','Baja California Sur'),
+                                                 ('SIN','Nacional');
 CREATE TABLE region(
     idRegion CHAR(3),
     nombre VARCHAR(19),
@@ -17,19 +20,6 @@ CREATE TABLE region(
     PRIMARY KEY ( idRegion ),
     FOREIGN KEY ( idSistema ) REFERENCES sistema( idSistema ) ON DELETE CASCADE
 );
-
-CREATE TABLE consumo(
-    idRegion CHAR(3),
-    year INT NOT NULL,
-    month INT NOT NULL,
-    cantidad INT NOT NULL,
-    PRIMARY KEY ( idRegion, year , month ),
-    FOREIGN KEY ( idRegion ) REFERENCES region( idRegion ) ON DELETE CASCADE 
-);
-
-INSERT INTO sistema( idSistema , nombre ) VALUES ('BCA','Baja California'),
-                                                 ('BCS','Baja California Sur'),
-                                                 ('SIN','Nacional');
 
 INSERT INTO region( idSistema , idRegion , nombre ) VALUES ('BCA','BCA','Baja California'),
                                                            ('BCS','BCS','Baja California Sur'),
@@ -40,4 +30,73 @@ INSERT INTO region( idSistema , idRegion , nombre ) VALUES ('BCA','BCA','Baja Ca
                                                            ('SIN','NTE','Norte'),
                                                            ('SIN','NES','Noreste'),
                                                            ('SIN','PEN','Peninsular');
-                                                                                
+
+CREATE TABLE consumo(
+    idRegion CHAR(3),
+    year INT NOT NULL,
+    month INT NOT NULL,
+    cantidad INT NOT NULL,
+    PRIMARY KEY ( idRegion, year , month ),
+    FOREIGN KEY ( idRegion ) REFERENCES region( idRegion ) ON DELETE CASCADE 
+);
+
+CREATE TABLE estado(
+    idEstado CHAR(2),
+    nombre VARCHAR(19) NOT NULL,
+    PRIMARY KEY ( idEstado )
+);
+
+INSERT INTO estado ( idEstado , nombre ) VALUES ('01', 'Aguascalientes'),
+                                                ('02', 'Baja California'),
+                                                ('03', 'Baja California Sur'),
+                                                ('04', 'Campeche'),
+                                                ('05', 'Coahuila'),
+                                                ('06', 'Colima'),
+                                                ('07', 'Chiapas'),
+                                                ('08', 'Chihuahua'),
+                                                ('09', 'Ciudad de México'),
+                                                ('10', 'Durango'),
+                                                ('11', 'Guanajuato'),
+                                                ('12', 'Guerrero'),
+                                                ('13', 'Hidalgo'),
+                                                ('14', 'Jalisco'),
+                                                ('15', 'México'),
+                                                ('16', 'Michoacán'),
+                                                ('17', 'Morelos'),
+                                                ('18', 'Nayarit'),
+                                                ('19', 'Nuevo León'),
+                                                ('20', 'Oaxaca'),
+                                                ('21', 'Puebla'),
+                                                ('22', 'Querétaro'),
+                                                ('23', 'Quintana Roo'),
+                                                ('24', 'San Luis Potosí'),
+                                                ('25', 'Sinaloa'),
+                                                ('26', 'Sonora'),
+                                                ('27', 'Tabasco'),
+                                                ('28', 'Tamaulipas'),
+                                                ('29', 'Tlaxcala'),
+                                                ('30', 'Veracruz'),
+                                                ('31', 'Yucatán'),
+                                                ('32', 'Zacatecas');
+
+CREATE TABLE nodo(
+    idNodo VARCHAR(12),
+    nombre VARCHAR(30) NOT NULL,
+    tension SMALLINT NOT NULL,
+    idEstado CHAR(2) NOT NULL,
+    idRegion CHAR(3) NOT NULL,
+    PRIMARY KEY ( idNodo ),
+    FOREIGN KEY ( idEstado ) REFERENCES estado ( idEstado ),
+    FOREIGN KEY ( idRegion ) REFERENCES region ( idRegion )
+);
+
+CREATE TABLE precio_mda(
+    idNodo VARCHAR(12),
+    fecha DATE,
+    hora SMALLINT,
+    precioMarginal DOUBLE NOT NULL,
+    PRIMARY KEY ( idNodo , fecha , hora ),
+    FOREIGN KEY ( idNodo ) REFERENCES nodo( idNodo ) ON DELETE CASCADE
+);
+                                                                                                                                    59,65         Bot
+ 

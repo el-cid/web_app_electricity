@@ -41,20 +41,20 @@ CREATE TABLE consumo(
 );
 
 CREATE TABLE estado(
-    idEstado CHAR(2),
+    idEstado VARCHAR(2),
     nombre VARCHAR(19) NOT NULL,
     PRIMARY KEY ( idEstado )
 );
 
-INSERT INTO estado ( idEstado , nombre ) VALUES ('01', 'Aguascalientes'),
-                                                ('02', 'Baja California'),
-                                                ('03', 'Baja California Sur'),
-                                                ('04', 'Campeche'),
-                                                ('05', 'Coahuila'),
-                                                ('06', 'Colima'),
-                                                ('07', 'Chiapas'),
-                                                ('08', 'Chihuahua'),
-                                                ('09', 'Ciudad de México'),
+INSERT INTO estado ( idEstado , nombre ) VALUES ('1', 'Aguascalientes'),
+                                                ('2', 'Baja California'),
+                                                ('3', 'Baja California Sur'),
+                                                ('4', 'Campeche'),
+                                                ('5', 'Coahuila'),
+                                                ('6', 'Colima'),
+                                                ('7', 'Chiapas'),
+                                                ('8', 'Chihuahua'),
+                                                ('9', 'Ciudad de México'),
                                                 ('10', 'Durango'),
                                                 ('11', 'Guanajuato'),
                                                 ('12', 'Guerrero'),
@@ -83,7 +83,7 @@ CREATE TABLE nodo(
     idNodo VARCHAR(12),
     nombre VARCHAR(30) NOT NULL,
     tension SMALLINT NOT NULL,
-    idEstado CHAR(2) NOT NULL,
+    idEstado VARCHAR(2) NOT NULL,
     idRegion CHAR(3) NOT NULL,
     PRIMARY KEY ( idNodo ),
     FOREIGN KEY ( idEstado ) REFERENCES estado ( idEstado ),

@@ -147,7 +147,7 @@
           .attr("y", legendRectSize - legendSpacing)
           .text(function(d) { return d; });
 
-      d3.json("consumoMapa.json", function(json){
+      d3.json("consultaMapa.php", function(json){
           data = json;
           svg.selectAll("path")
             .attr("class", quantify)

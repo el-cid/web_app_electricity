@@ -87,9 +87,9 @@
         var consumptionArray;
         function requestData() {
             var xmlhttp = new XMLHttpRequest();
-            //xmlhttp.open("POST", "consultaLineas.php", true);
-            //xmlhttp.setRequestHeader("Content-Type", "application/x-httpd-php");                  
-            xmlhttp.open("POST", "consumoLineas.json", true);
+            xmlhttp.open("POST", "consultaLineas.php", true);
+            xmlhttp.setRequestHeader("Content-Type", "application/x-httpd-php");                  
+            //xmlhttp.open("POST", "consumoLineas.json", true);
             xmlhttp.send();
 
             xmlhttp.onreadystatechange = function(){

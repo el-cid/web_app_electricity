@@ -29,6 +29,15 @@
           line-height: 30px;
           float: left;
         }
+        .time-series2 {
+          width:50px;
+          background: #eee;
+          margin:0;
+          padding:0;
+          text-align:center;
+          line-height: 30px;
+          float: left;
+        }
         .active {
           background: #b4b4b4;
           color:white;
@@ -44,11 +53,18 @@
           color: #d73027;
         }
     </style>
-    
 </head>
 <body>
     <section class="main-content">
         <h1>Consumo eléctrico mensual en el Sistema Interconectado Nacional</h1>
+        <div id="timeline2">
+            <div class="time-series2">2016</div>
+            <div class="time-series2">2017</div>
+            <div class="time-series2">2018</div>
+        </div>
+    </section>
+        <br>
+    <section class="main-content">
         <div id="timeline">
             <div class="time-series"></div>
             <div class="time-series">Ene</div>
@@ -65,23 +81,29 @@
             <div class="time-series">Dic</div>
         </div>
         
+    </section>
+
+    <section class="main-content">
         <div id="chart"></div>
     </section>
 </body>
     <script>
         var data;
-        var year;
+        var month = 1;
+        var year = "2017";
         var consumptionArray;
         function requestData() {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("POST", "consultaPastel.php", true);
             xmlhttp.setRequestHeader("Content-Type", "application/x-httpd-php");                  
-            //xmlhttp.open("POST", "consumoPastel.json", true);
             xmlhttp.send();
 
             xmlhttp.onreadystatechange = function(){
                                             if( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
                                                 consumptionArray = JSON.parse( xmlhttp.responseText );
+                                                for (year in consumptionArray) {
+                
+                                                }
                                                 data = consumptionArray["2017"]["1"];
                                                 for ( i = 0; i < data.length; i++){
                                                     data[i]["cantidad"] = +data[i]["cantidad"];
@@ -106,31 +128,48 @@
             var runDimension = ndx.dimension( function(item) {
                                                return item.region;
                                             });
-speedSumGroup = runDimension.group().reduceSum(function(d) { 
-       return d.cantidad;
-    });
+            speedSumGroup = runDimension.group().reduceSum( function(d) { 
+                                                                return d.cantidad;
+                                                            }
+                                                          );
 
-  chart
-    .width(568)
-    .height(580)
-    .slicesCap(7)
-    .innerRadius(10)
-    .dimension(runDimension)
-    .group(speedSumGroup) // by default, pie charts will use group.key as the label
-    .renderLabel(true).label(function (d) {return d.key.toUpperCase();});
-    chart.render();
-
+            chart
+                 .width(568)
+                 .height(580)
+                 .slicesCap(7)
+                 .innerRadius(10)
+                 .dimension(runDimension)
+                 .group(speedSumGroup) // by default, pie charts will use group.key as the label
+                 .renderLabel(true).label(function (d) {return d.key.toUpperCase();});
             
+            chart.render();
         }
-
-        
+        var timeline2 = d3.selectAll(".time-series2")
+                         .on("mouseover", function(d, i) {
+                                              year = 2016 + i;
+                                              year = year.toString();
+                                              console.log(year + "\n");
+                                              d3.selectAll(".time-series2")
+                                                .attr("class", "time-series2");
+                                              this.className = "time-series2 active";
+                                              //data = consumptionArray["2017"][month];
+                                              data = consumptionArray[year][month];
+                                              for ( i = 0; i < data.length; i++){
+                                                  data[i]["cantidad"] = +data[i]["cantidad"];
+                                                  data[i]["ptg"] = +data[i]["ptg"];
+                                              }
+                                              draw(data);
+                                          });
         var timeline = d3.selectAll(".time-series")
                          .on("mouseover", function(d, i) {
-                                              year = i.toString();
+                                              //month = i.toString();
+                                              month = i;
+                                              console.log(month + "\n");
                                               d3.selectAll(".time-series")
                                                 .attr("class", "time-series");
                                               this.className = "time-series active";
-                                              data = consumptionArray["2017"][i];
+                                              //data = consumptionArray["2017"][month];
+                                              data = consumptionArray[year][month];
                                               for ( i = 0; i < data.length; i++){
                                                   data[i]["cantidad"] = +data[i]["cantidad"];
                                                   data[i]["ptg"] = +data[i]["ptg"];
@@ -139,5 +178,5 @@ speedSumGroup = runDimension.group().reduceSum(function(d) {
                                           });
         
         window.onload = requestData;
-    </script>
+    </script> 
 </html>

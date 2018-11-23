@@ -14,19 +14,20 @@
         if ( $conn->connect_error ) {
             die("Connection failed: " . $conn->connect_error);
         }
-    
-        $inputFile = fopen('consumo_2017.csv','r');
-        
-        $consumo = array();
-
-        parse( $inputFile , $consumo );
-        insertConsumptionDataToDB( $conn, $consumo );
-        
-        fclose( $inputFile );
+	$files = glob('../datos/consumo/consumo_201?.csv', GLOB_BRACE);
+	$year = 2016;
+        foreach ( $files as $file ){
+            $inputFile = fopen( $file , 'r' );    
+            $consumo = array();
+	    parse( $inputFile , $consumo , $year );
+            insertConsumptionDataToDB( $conn, $consumo );
+	    fclose( $inputFile );
+	    $year += 1;
+	}    
     
     }
     
-    function parse( $sourceFile , &$outputData ){
+    function parse( $sourceFile , &$outputData , $year ){
         $header = true;
         while ( $line = fgets( $sourceFile ) ) {
             if ( $header == true ){
@@ -45,7 +46,7 @@
                     }
                     $data = array(
                               "idRegion" => $idRegion,
-                              "year" => 2017,
+                              "year" => $year,
                               "month" => $month,
                               "cantidad" => $cantidad
                              );

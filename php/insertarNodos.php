@@ -15,7 +15,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
     
-        $inputFile = fopen('datosNodos/catalogoFiltrado.csv','r');
+        $inputFile = fopen('../datos/nodos/catalogoFiltrado.csv','r');
         
         $fileData = array();
 

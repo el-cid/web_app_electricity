@@ -23,7 +23,7 @@
     } 
 
     function readConsumption( $conn , &$regiones ){
-        $query = "SELECT consumo.year AS year, month, idRegion, cantidad, 100 * (cantidad/systemTotal) AS ptg FROM consumo INNER JOIN (SELECT idRegion FROM region WHERE idSistema = 'SIN') AS regionesSin USING (idRegion) INNER JOIN (SELECT year,month, SUM(cantidad) AS systemTotal FROM consumo INNER JOIN region USING (idRegion) WHERE idSistema = 'SIN' GROUP BY month,year) AS totals USING (month)";
+        $query = "SELECT consumo.year AS year, month, idRegion, cantidad, 100 * (cantidad/systemTotal) AS ptg FROM consumo INNER JOIN (SELECT idRegion FROM region WHERE idSistema = 'SIN') AS regionesSin USING (idRegion) INNER JOIN (SELECT year,month, SUM(cantidad) AS systemTotal FROM consumo INNER JOIN region USING (idRegion) WHERE idSistema = 'SIN' GROUP BY month,year) AS totals USING (year,month)";
         $result = $conn->query($query);
         while($row = $result->fetch_assoc()) {
             if ( !(array_key_exists($row["year"], $regiones)) ) {

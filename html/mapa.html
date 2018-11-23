@@ -147,7 +147,7 @@
           .attr("y", legendRectSize - legendSpacing)
           .text(function(d) { return d; });
 
-      d3.json("consultaMapa.php", function(json){
+      d3.json("../php/consultaMapa.php", function(json){
           data = json;
           svg.selectAll("path")
             .attr("class", quantify)
@@ -204,7 +204,7 @@ function quantify(d) {
       }
     };
     //Use D3 to load the GeoJSON file of the Dutch provinces and call the draw function
-    d3.json("regiones.geojson", draw);
+    d3.json("../datos/regiones.geojson", draw);
   </script>
 </head>
 <body>

@@ -1,0 +1,74 @@
+.main-content{
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 12px;
+}
+
+.map {
+    display: inline-block;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.q0-9 { fill:#ffffcc; }
+.q1-9 { fill:#ffeda0; }
+.q2-9 { fill:#fed976; }
+.q3-9 { fill:#feb24c; }
+.q4-9 { fill:#fd8d3c; }
+.q5-9 { fill:#fc4e2a; }
+.q6-9 { fill:#e31a1c; }
+.q7-9 { fill:#bd0026; }
+.q8-9 { fill:#800026; }
+
+.label {
+    font-weight: bold;
+    text-anchor: middle;
+    cursor: default;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 4px;
+    background: #fff;
+    border: 0px;
+    pointer-events: none;
+}
+
+/* center the time-series elements on the page in the #timeline container*/
+#timeline{
+    width: 750px;
+    margin: 0 auto;
+}
+
+/* basic styling for the time-series elements */
+.time-series {
+    width:50px;
+    background: #eee;
+    margin:0;
+    padding:0;
+    text-align:center;
+    line-height: 30px;
+    float: left;
+}
+
+/* styles for the active time-series element */
+.active {
+    background: #b4b4b4;
+    color:white;
+}
+
+/* styles for the trend information */
+.trend {
+    font-weight: bold;
+    font-size: 110%;
+}
+
+.pos {
+    color: #1a9850;
+}
+
+.neg {
+    color: #d73027;
+}

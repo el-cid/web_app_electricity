@@ -1,0 +1,17 @@
+.dc-chart {
+    float: none;
+}
+
+.lineGraph g.axis.x g.tick text {
+    text-anchor: end;
+}
+
+.lineGraph g.axis.x g.tick line,
+.lineGraph g.axis.y g.tick line {
+    display: none;
+}
+
+.grid-line.vertical line, g.axis.y path.domain {
+    opacity: 1;
+    stroke: #cccccc;
+}

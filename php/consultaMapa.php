@@ -17,30 +17,26 @@
         } 
         
         $regiones = array(); 
-        readRegions( $conn , $regiones );
         readConsumption( $conn , $regiones );
         echo json_encode($regiones, JSON_PRETTY_PRINT);
 
-    }
-
-    function readRegions( $conn , &$regiones ){
-        $query = "SELECT DISTINCT idRegion FROM consumo";
-        $result = $conn->query($query);
-        while($row = $result->fetch_assoc()) {
-            $region = $row["idRegion"];
-            $regiones[$region] = array();
-        }
-        $result->close();
-    }
+    } 
 
     function readConsumption( $conn , &$regiones ){
-        $query = "SELECT * FROM consumo";
+        $query = "SELECT consumo.year AS year, month, idRegion, cantidad FROM consumo";
         $result = $conn->query($query);
         while($row = $result->fetch_assoc()) {
-            if ( !(array_key_exists($row["year"], $regiones[$row["idRegion"]])) ) {
-                $regiones[$row["idRegion"]][$row["year"]] = array();     
+            if ( !(array_key_exists($row["year"], $regiones)) ) {
+                $regiones[$row["year"]] = array();     
             }
-            $regiones[$row["idRegion"]][$row["year"]][$row["month"]] = $row["cantidad"];     
+            if ( !(array_key_exists($row["month"], $regiones[$row["year"]])) ) {
+                $regiones[$row["year"]][$row["month"]] = array();     
+            }
+            array_push( $regiones[$row["year"]][$row["month"]], array( 
+                                                                      "region" => $row["idRegion"], 
+                                                                      "cantidad" => $row["cantidad"]
+                                                                      )
+                      );
         }
         $result->close();
     }

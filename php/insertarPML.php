@@ -16,7 +16,7 @@
         }
     
 
-        $files = glob('../datos/nodos/datos0?.csv', GLOB_BRACE);
+        $files = glob('../datos/pml/datos0*.csv', GLOB_BRACE);
         foreach ( $files as $file ){
             $inputFile = fopen( $file , 'r' );            
 

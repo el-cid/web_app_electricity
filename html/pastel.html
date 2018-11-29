@@ -25,7 +25,6 @@
                         consumptionArray = JSON.parse( xmlhttp.responseText );
                         for ( year in consumptionArray ) {  
                             populateOptionList( "availableYears" , year );
-                            document.getElementById("availableYears").addEventListener("change", updateMonthList);
                             for ( month in consumptionArray[year] ){
                                 data = consumptionArray[year][month];
                                 for ( i = 0; i < data.length; i++){
@@ -97,6 +96,7 @@
             document.addEventListener("DOMContentLoaded", function() {
                 var drawButton = document.getElementById('drawButton');
                 drawButton.addEventListener('click', draw);
+                document.getElementById("availableYears").addEventListener("change", updateMonthList);
             });
             window.onload = requestUserData;
         </script>

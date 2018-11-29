@@ -17,10 +17,6 @@
                 xmlhttp.onreadystatechange = function(){
                     if( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
                         dates = JSON.parse( xmlhttp.responseText );
-                        for( region in dates ){
-                            dates[region]["min"] = dates[region]["min"];
-                            dates[region]["max"] = dates[region]["max"];
-                        }
                         setDateRange();
                     }    
                 };

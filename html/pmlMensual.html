@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>PML Diario</title>
+        <title>PML Mensual</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script>
@@ -10,68 +10,81 @@
 
             function requestUserData(){
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("POST", "../php/consultaDiaPML.php", true);
+                xmlhttp.open("POST", "../php/consultaMesPML.php", true);
                 xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xmlhttp.send("data=DATES");
 
                 xmlhttp.onreadystatechange = function(){
                     if( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
                         dates = JSON.parse( xmlhttp.responseText );
-                        for( region in dates ){
-                            dates[region]["min"] = dates[region]["min"];
-                            dates[region]["max"] = dates[region]["max"];
-                        }
-                        setDateRange();
+                        updateYearList(); 
                     }    
                 };
             }
     
             function requestPMLData(){
-                var fecha  = document.getElementById('date').value;
-                if (fecha){
-                    var regionSelector = document.getElementById('availableRegions');
-                    var region = regionSelector.options[regionSelector.selectedIndex].value;
-                    var xmlhttp = new XMLHttpRequest();
-                    xmlhttp.open("POST", "../php/consultaDiaPML.php", true);
-                    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                    xmlhttp.send("data=PML&idRegion=" + region + "&fecha=" + fecha);
-              
-                    xmlhttp.onreadystatechange = function(){
-                        if( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
-                            priceData = JSON.parse( xmlhttp.responseText );
-                            for( nodo in priceData ){
-                                for( hora in priceData[nodo] ){
-                                    priceData[nodo][hora] = +priceData[nodo][hora];
-                                } 
-                            }
-                        }    
-                    };
-                }
-                else{
-                    alert("Ingresa una fecha, por favor.");
-                }
-            }
-
-            function setDateRange(){  
                 var regionSelector = document.getElementById('availableRegions');
                 var region = regionSelector.options[regionSelector.selectedIndex].value;
-                var firstAvailableDate = dates[region]["min"];
-                var lastAvailableDate =  dates[region]["max"];
-                
-                var range = firstAvailableDate + "," + lastAvailableDate;
-                var dateRangeLabel = document.getElementById('dateRange');
-                dateRangeLabel.textContent = "[" + range + "]" ;
-                
-                var dateField = document.getElementById('date');
-                dateField.setAttribute("min", firstAvailableDate);
-                dateField.setAttribute("max", lastAvailableDate);
+                var yearSelector = document.getElementById('availableYears');
+                var year = yearSelector.options[yearSelector.selectedIndex].value;
+                var monthSelector = document.getElementById('availableMonths');
+                var month = monthSelector.options[monthSelector.selectedIndex].value;
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", "../php/consultaMesPML.php", true);
+                xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xmlhttp.send("data=PML&idRegion=" + region + "&year=" + year + "&month=" + month);
+              
+                xmlhttp.onreadystatechange = function(){
+                    if( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
+                        priceData = JSON.parse( xmlhttp.responseText );
+                        for( nodo in priceData ){
+                        }
+                    }    
+                };
+            }
+
+            function cleanList( listID ){
+                var optionList = document.getElementById( listID );
+                for(var i = optionList.length - 1; i >= 0; i--)
+                {
+                    optionList.remove(i);
+                }
+            }
+            
+            function updateYearList(){
+                cleanList("availableYears");
+                var selector = document.getElementById("availableRegions");
+                var region = selector[selector.selectedIndex].value;
+                for (year in dates[region]) {    
+                    populateOptionList( "availableYears" , year);
+                }
+                updateMonthList(); 
+            } 
+
+            function updateMonthList(){
+                cleanList("availableMonths");
+                var regionSelector = document.getElementById("availableRegions");
+                var region = regionSelector[regionSelector.selectedIndex].value;
+                var yearSelector = document.getElementById("availableYears");
+                var selectedYear = yearSelector[yearSelector.selectedIndex].value;
+                var length = dates[region][selectedYear].length;
+                for (var i = 0; i < length; i++) {    
+                    populateOptionList( "availableMonths" , dates[region][selectedYear][i]);
+                }
+            } 
+
+            function populateOptionList( listID , value ) {
+                var optionList = document.getElementById( listID );
+                optionList.options[optionList.options.length] = new Option( value , value );
             }
 
             document.addEventListener("DOMContentLoaded", function() {
                 var drawButton = document.getElementById('drawButton');
                 drawButton.addEventListener('click', requestPMLData);
                 var regionSelector = document.getElementById('availableRegions');
-                regionSelector.addEventListener('click', setDateRange);
+                regionSelector.addEventListener('click', updateYearList);
+                var yearSelector = document.getElementById('availableYears');
+                yearSelector.addEventListener('click', updateMonthList);
             });
 
             window.onload = requestUserData;
@@ -79,7 +92,7 @@
     </head>
     <body>
         <section>
-            <h1>Precios Marginales Locales Regionales Diarios del Mercado de un Día en Adelanto</h1>
+            <h1>Precios Marginales Locales Regionales Mensuales Promedio del Mercado de un Día en Adelanto</h1>
             <hr>
             <div>
                 <label for="availableRegions">Región:</label>
@@ -94,8 +107,12 @@
                     <option value="ORI">Oriental</option>
                     <option value="PEN">Peninsular</option>
                 </select>
-                <label id="dateLabel" for="date">Ingresa una fecha entre <span id='dateRange'></span> :</label>
-                <input type="date" id="date" name="date">
+                <label for="availableYears">Año:</label>
+                <select id="availableYears" name="availableYears">
+                </select>
+                <label for="availableMonths">Mes:</label>
+                <select id="availableMonths" name="availableMonths">
+                </select>
                 <button id="drawButton">Visualizar</button>
             </div>
         </section>

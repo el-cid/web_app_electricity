@@ -22,9 +22,9 @@
                 xmlhttp.onreadystatechange = function(){
                     if( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
                         data = JSON.parse( xmlhttp.responseText );
+                        document.getElementById("availableYears").addEventListener("change", updateMonthList);
                         for ( year in data ) {  
                             populateOptionList( "availableYears" , year );
-                            document.getElementById("availableYears").addEventListener("change", updateMonthList);
                         }
                         updateMonthList(); 
                         d3.json("../datos/regiones.geojson", function(json) {

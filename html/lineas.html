@@ -26,7 +26,6 @@
                         consumptionArray = JSON.parse( xmlhttp.responseText );
                         for ( region in consumptionArray ) {  
                             populateOptionList( "availableRegions" , region );
-                            document.getElementById("availableRegions").addEventListener("change", updateYearList);
                             for ( year in consumptionArray[region] ){
                                 data = consumptionArray[region][year];
                                 for ( i = 0; i < data.length; i++){
@@ -219,6 +218,7 @@
             document.addEventListener("DOMContentLoaded", function() {
                 var drawButton = document.getElementById('drawButton');
                 drawButton.addEventListener('click', draw);
+                document.getElementById("availableRegions").addEventListener("change", updateYearList);
             });
 
             window.onload = requestUserData;

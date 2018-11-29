@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>PML Diario</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var dates;
+            var priceData;
+
+            function requestUserData(){
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", "../php/consultaDiaPML.php", true);
+                xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xmlhttp.send("data=DATES");
+
+                xmlhttp.onreadystatechange = function(){
+                    if( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
+                        dates = JSON.parse( xmlhttp.responseText );
+                        for( region in dates ){
+                            dates[region]["min"] = dates[region]["min"];
+                            dates[region]["max"] = dates[region]["max"];
+                        }
+                        setDateRange();
+                    }    
+                };
+            }
+    
+            function requestPMLData(){
+                var fecha  = document.getElementById('date').value;
+                if (fecha){
+                    var regionSelector = document.getElementById('availableRegions');
+                    var region = regionSelector.options[regionSelector.selectedIndex].value;
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.open("POST", "../php/consultaDiaPML.php", true);
+                    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xmlhttp.send("data=PML&idRegion=" + region + "&fecha=" + fecha);
+              
+                    xmlhttp.onreadystatechange = function(){
+                        if( xmlhttp.readyState === 4 && xmlhttp.status === 200 ) {
+                            priceData = JSON.parse( xmlhttp.responseText );
+                            for( nodo in priceData ){
+                                for( hora in priceData[nodo] ){
+                                    priceData[nodo][hora] = +priceData[nodo][hora];
+                                } 
+                            }
+                        }    
+                    };
+                }
+                else{
+                    alert("Ingresa una fecha, por favor.");
+                }
+            }
+
+            function setDateRange(){  
+                var regionSelector = document.getElementById('availableRegions');
+                var region = regionSelector.options[regionSelector.selectedIndex].value;
+                var firstAvailableDate = dates[region]["min"];
+                var lastAvailableDate =  dates[region]["max"];
+                
+                var range = firstAvailableDate + "," + lastAvailableDate;
+                var dateRangeLabel = document.getElementById('dateRange');
+                dateRangeLabel.textContent = "[" + range + "]" ;
+                
+                var dateField = document.getElementById('date');
+                dateField.setAttribute("min", firstAvailableDate);
+                dateField.setAttribute("max", lastAvailableDate);
+            }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                var drawButton = document.getElementById('drawButton');
+                drawButton.addEventListener('click', requestPMLData);
+                var regionSelector = document.getElementById('availableRegions');
+                regionSelector.addEventListener('click', setDateRange);
+            });
+
+            window.onload = requestUserData;
+        </script>
+    </head>
+    <body>
+        <section>
+            <h1>Precios Marginales Locales Regionales Diarios del Mercado de un Día en Adelanto</h1>
+            <hr>
+            <div>
+                <label for="availableRegions">Región:</label>
+                <select id="availableRegions" name="availableRegions">
+                    <option value="BCA">Baja California</option>
+                    <option value="BCS">Baja California Sur</option>
+                    <option value="CEL">Central</option>
+                    <option value="NES">Noreste</option>
+                    <option value="NOR">Noroeste</option>
+                    <option value="NTE">Norte</option>
+                    <option value="OCC">Occidental</option>
+                    <option value="ORI">Oriental</option>
+                    <option value="PEN">Peninsular</option>
+                </select>
+                <label id="dateLabel" for="date">Ingresa una fecha entre <span id='dateRange'></span> :</label>
+                <input type="date" id="date" name="date">
+                <button id="drawButton">Visualizar</button>
+            </div>
+        </section>
+    </body>
+</html>

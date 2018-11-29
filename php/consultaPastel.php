@@ -23,7 +23,12 @@
     } 
 
     function readConsumption( $conn , &$regiones ){
-        $query = "SELECT consumo.year AS year, month, idRegion, cantidad FROM consumo INNER JOIN (SELECT idRegion FROM region WHERE idSistema = 'SIN') AS regionesSin USING (idRegion)";
+        $query = "SELECT consumo.year AS year, month, idRegion, cantidad 
+                  FROM consumo INNER JOIN 
+                       (SELECT idRegion 
+                        FROM region 
+                        WHERE idSistema = 'SIN') 
+                    AS regionesSin USING (idRegion)";
         $result = $conn->query($query);
         while($row = $result->fetch_assoc()) {
             if ( !(array_key_exists($row["year"], $regiones)) ) {

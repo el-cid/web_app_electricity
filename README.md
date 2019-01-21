@@ -1,4 +1,20 @@
+# Tablero para el sistema eléctrico nacional
+## Introducción
+En un sistema eléctrico la energía eléctrica pasa por al menos cinco etapas para llegar de las centrales generadoras a los usuarios finales:
+1. Generación a partir de combustibles o fuentes renovables.
+2. Despacho por medio de un centro computarizado que ordena a dónde debe dirigirse la energía eléctrica.
+3. Transmisión a través de la red eléctrica de alta tensión.
+4. Distribución a través de la red eléctrica de baja tensión, abasteciendo así a las ciudades y pueblos.
+5. Comercialización.
 
+
+El Sistema Eléctrico de México está dividido en subsistemas interconectados, el control y la gestión de estos subsistemas se divide a su vez por regiones geográficas: 
+
+  Sistema Interconectado | Región geográfica
+  ---------------------- | --------------------------
+ Sistema Interconectado Baja California | Baja California
+ Sistema Interconectado Baja California Sur | Baja California Sur
+ Sistema Interconectado Nacional | Occidental, Central, Oriental, Peninsular, Norte, Noreste, Noroeste 
  
 
 ![Mapa](https://github.com/el-cid/sistema_electrico_nacional/blob/el-cid-patch-1/mapav3.png)

@@ -17,7 +17,7 @@ El Sistema Eléctrico de México está dividido en subsistemas interconectados, 
  Sistema Interconectado Nacional | Occidental, Central, Oriental, Peninsular, Norte, Noreste, Noroeste 
  
 
-![Mapa](https://github.com/el-cid/sistema_electrico_nacional/blob/el-cid-patch-1/mapav3.png)
+![Mapa](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/mapav3.png)
 
  Gerencia de Control Regional | Ambito geográfico que controla
   ---------------------- | --------------------------
@@ -73,7 +73,7 @@ Se desarrollara un sistema que permita la gestión y visualización de los datos
 
 ## Diagrama Entidad-Relación:
 
-![Diagrama entidad relación](https://github.com/el-cid/sistema_electrico_nacional/blob/el-cid-patch-1/diagrama_er_webv5.png)
+![Diagrama entidad relación](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/diagrama_er_webv5.png)
 
 ## Tablas
 
@@ -170,19 +170,29 @@ Clave | Tension | Región | Estado
 
 Se desarrolló un sitio web que permite la visualización de los datos del MDA, o promedios de estos, utilizando HTML, CSS, JavaScript, D3.js y DC.js en el front-end y Apache, MySQL y PHP en el back-end. Las páginas que conforman el sitio son las siguientes:
 
+![Website homepage](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/homepage.png)
+
 ### Nodos por región
+
+![Nodos por region](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/nodos_por_region.png)
 
 ### Gestionar nodos
 
+![Gestion nodos](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/gestion_nodos.png)
+
 ### Precios MDA diarios
+
+![Precios MDA diarios](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/precios_mda_diarios.png)
 
 ### Precios MDA mensuales
 
+![Precios MDA mensuales](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/precios_mda_mensuales.png)
+
 ### Consumo eléctrico regional anual
+
+![Consumo anual](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/consumo_regional_anual.png)
 
 ### Mapa consumo mensual
 
-
-
-
+![Mapa consumo mensual](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/mapa_consumo_mensual.png)
 

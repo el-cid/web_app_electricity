@@ -165,3 +165,24 @@ Clave | Tension | Región | Estado
 ------|---------|--------|-------
 01AAN-85 | 85 | CEL | 13
 07TCB-115 | 115 | BCS | 3
+
+## Funcionalidad del proyecto
+
+Se desarrolló un sitio web que permite la visualización de los datos del MDA, o promedios de estos, utilizando HTML, CSS, JavaScript, D3.js y DC.js en el front-end y Apache, MySQL y PHP en el back-end. Las páginas que conforman el sitio son las siguientes:
+
+### Nodos por región
+
+### Gestionar nodos
+
+### Precios MDA diarios
+
+### Precios MDA mensuales
+
+### Consumo eléctrico regional anual
+
+### Mapa consumo mensual
+
+
+
+
+

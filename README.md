@@ -168,31 +168,61 @@ Clave | Tension | Región | Estado
 
 ## Funcionalidad del proyecto
 
-Se desarrolló un sitio web que permite la visualización de los datos del MDA, o promedios de estos, utilizando HTML, CSS, JavaScript, D3.js y DC.js en el front-end y Apache, MySQL y PHP en el back-end. Las páginas que conforman el sitio son las siguientes:
+Se desarrolló un sitio web que permite la visualización de los datos del MDA, o promedios de estos, utilizando HTML, CSS, JavaScript, D3.js y DC.js en el front-end y Apache, MySQL y PHP en el back-end. 
+Para reducir la latencia entre la base de datos y el cliente, solamente se consideraron los datos de los 5 nodos con precios historicamente más altos, por región. Estos nodos fueron determinados utilizando una consulta con _window functions_, para cada región (todas estas consultas se pueden encontrar en sql/consulta.sql): 
+
+```sql
+SELECT id_nodo 
+FROM (SELECT id_nodo, COUNT(*) AS num_occurrences 
+      FROM (SELECT id_nodo, fecha, avg_daily_price, rank() OVER (PARTITION BY fecha 
+                                                                 ORDER BY avg_daily_price DESC) 
+            FROM (SELECT id_nodo, fecha, AVG(precio_marginal) AS avg_daily_price 
+                  FROM precios_energia 
+                  WHERE id_nodo LIKE '01%' 
+                  GROUP BY id_nodo, fecha) AS avg_daily_prices) AS rank_filter 
+            WHERE rank <= 5 
+            GROUP BY id_nodo 
+            ORDER BY num_occurrences DESC LIMIT 5
+     ) AS top_nodes;
+```
+
+Las páginas que conforman el sitio web son las siguientes:
 
 ![Website homepage](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/homepage.png)
 
 ### Nodos por región
 
+Asasasasa.
+
 ![Nodos por region](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/nodos_por_region.png)
 
 ### Gestionar nodos
+
+Asasasasa.
 
 ![Gestion nodos](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/gestion_nodos.png)
 
 ### Precios MDA diarios
 
+Asasasasa.
+
 ![Precios MDA diarios](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/precios_mda_diarios.png)
 
 ### Precios MDA mensuales
+
+Asasasasa.
 
 ![Precios MDA mensuales](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/precios_mda_mensuales.png)
 
 ### Consumo eléctrico regional anual
 
+Asasasasa.
+
 ![Consumo anual](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/consumo_regional_anual.png)
 
 ### Mapa consumo mensual
+
+Asasasasa.
 
 ![Mapa consumo mensual](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/mapa_consumo_mensual.png)
 

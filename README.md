@@ -192,37 +192,44 @@ Las páginas que conforman el sitio web son las siguientes:
 
 ### Nodos por región
 
-Asasasasa.
+Esta página permite la visualización de los datos de cada uno de los nodos de una región.
 
 ![Nodos por region](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/nodos_por_region.png)
 
 ### Gestionar nodos
 
-Asasasasa.
+Esta página permite añadir un nuevo nodo, o modificar o eliminar los datos de un nodo existente.
 
 ![Gestion nodos](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/gestion_nodos.png)
 
 ### Precios MDA diarios
 
-Asasasasa.
+Esta página genera dinámicamente una gráfica interactiva que muestra los precios de venta de los nodos de una región, en un horizonte de 24 horas.
 
 ![Precios MDA diarios](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/precios_mda_diarios.png)
 
 ### Precios MDA mensuales
 
-Asasasasa.
+Esta página genera dinámicamente una gráfica interactiva que muestra los precios de venta de los nodos de una región, por mes, realizando un promedio del precio de venta diario de cada nodo.
 
 ![Precios MDA mensuales](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/precios_mda_mensuales.png)
 
 ### Consumo eléctrico regional anual
 
-Asasasasa.
+Esta página genera dinámicamente una gráfica interactiva que muestra el conumo eléctrico mensual de una región, en un horizonte anual.
 
 ![Consumo anual](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/consumo_regional_anual.png)
 
 ### Mapa consumo mensual
 
-Asasasasa.
+Esta página despliega un mapa de la republica, que es coloreado dinámicamente, creando rangos de valores, en los que entre mayor sea el valor del consumo de una región, más oscura es la tonalidad del color asignado. El mapa fue realizado utilizando QGIS, un sistema de información geográfica.  Los rangos de valores se calcularon mediante la siguiente consulta:
+
+```sql
+SELECT AVG(diff)/9 
+FROM (SELECT month, MIN(cantidad) AS MIN, MAX(cantidad) AS MAX, MAX(cantidad)-MIN(cantidad) AS DIFF  
+      FROM consumo 
+      GROUP BY month) AS summary;
+```
 
 ![Mapa consumo mensual](https://github.com/el-cid/web_app_electricity/blob/master/screenshots/mapa_consumo_mensual.png)
 
